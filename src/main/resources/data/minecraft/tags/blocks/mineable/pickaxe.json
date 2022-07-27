@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "tutorialmod:rubidium_block",
+    "tutorialmod:rubidium_ore",
+    "tutorialmod:deepslate_rubidium_ore"
+  ]
+}

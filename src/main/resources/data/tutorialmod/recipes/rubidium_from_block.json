@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "tutorialmod:rubidium_block"
+    }
+  ],
+  "result": {
+    "item": "tutorialmod:rubidium",
+    "count": 9
+  }
+}

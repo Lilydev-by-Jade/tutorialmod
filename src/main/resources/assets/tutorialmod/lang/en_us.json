@@ -1,0 +1,10 @@
+{
+  "item.tutorialmod.raw_rubidium": "Raw Rubidium",
+  "item.tutorialmod.rubidium": "Rubidium",
+
+  "block.tutorialmod.rubidium_block": "Block of Rubidium",
+  "block.tutorialmod.rubidium_ore": "Rubidium Ore",
+  "block.tutorialmod.deeplsate_rubidium_ore": "Deepslate Rubidium Ore",
+
+  "itemGroup.tutorialmod.rubidium": "Rubidium Tutorial Tab"
+}
