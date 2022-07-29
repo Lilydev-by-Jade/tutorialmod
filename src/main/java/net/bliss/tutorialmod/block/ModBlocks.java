@@ -1,6 +1,7 @@
 package net.bliss.tutorialmod.block;
 
 import net.bliss.tutorialmod.TutorialMod;
+import net.bliss.tutorialmod.block.custom.JumpyBlock;
 import net.bliss.tutorialmod.item.ModItemGroup;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -8,7 +9,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -30,6 +30,8 @@ public class ModBlocks {
             new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool(),
                     UniformIntProvider.create(3, 7)), ModItemGroup.RUBIDIUM);
 
+    public static final Block JUMPY_BLOCK = registerBlock("jumpy_block",
+            new JumpyBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool()), ModItemGroup.RUBIDIUM);
 
     private static Block registerBlock(String name, Block block, ItemGroup tab){
         registerblockItem(name, block, tab);
@@ -38,9 +40,9 @@ public class ModBlocks {
 
 
 
-    private static Item registerblockItem(String name, Block block, ItemGroup tab) {
-        return Registry.register(Registry.ITEM, new Identifier(TutorialMod.MOD_ID, name),
-                    new BlockItem(block, new FabricItemSettings().group(tab)));
+    private static void registerblockItem(String name, Block block, ItemGroup tab) {
+        Registry.register(Registry.ITEM, new Identifier(TutorialMod.MOD_ID, name),
+                new BlockItem(block, new FabricItemSettings().group(tab)));
     }
 
     public static void registerModBlocks() {
