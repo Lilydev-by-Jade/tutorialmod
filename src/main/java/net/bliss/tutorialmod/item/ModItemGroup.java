@@ -7,5 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public class ModItemGroup {
-    public static final ItemGroup RUBIDIUM = FabricItemGroupBuilder.build(new Identifier(TutorialMod.MOD_ID, "rubidium"), () -> new ItemStack(ModItems.RUBIDIUM));
+    public static final ItemGroup RUBIDIUM = FabricItemGroupBuilder.build(new Identifier(TutorialMod.MOD_ID, "rubidium"),
+            () -> new ItemStack(ModItems.RUBIDIUM));
 }

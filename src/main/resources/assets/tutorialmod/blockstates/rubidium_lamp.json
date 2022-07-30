@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "Lit=true": {"model": "tutorialmod:block/rubidium_lamp_on" },
+    "Lit=false": {"model": "tutorialmod:block/rubidium_lamp_off" }
+  }
+}

@@ -2,6 +2,7 @@ package net.bliss.tutorialmod.block;
 
 import net.bliss.tutorialmod.TutorialMod;
 import net.bliss.tutorialmod.block.custom.JumpyBlock;
+import net.bliss.tutorialmod.block.custom.RubidiumLampBlock;
 import net.bliss.tutorialmod.item.ModItemGroup;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -32,6 +33,10 @@ public class ModBlocks {
 
     public static final Block JUMPY_BLOCK = registerBlock("jumpy_block",
             new JumpyBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool()), ModItemGroup.RUBIDIUM);
+
+    public static final Block RUBIDIUM_LAMP = registerBlock("rubidium_lamp",
+            new RubidiumLampBlock(FabricBlockSettings.of(Material.REDSTONE_LAMP).strength(4f).requiresTool().requiresTool()
+                    .luminance(state -> state.get(RubidiumLampBlock.LIT) ? 15 : 0)), ModItemGroup.RUBIDIUM);
 
     private static Block registerBlock(String name, Block block, ItemGroup tab){
         registerblockItem(name, block, tab);
