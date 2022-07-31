@@ -35,7 +35,7 @@ public class ModBlocks {
             new JumpyBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool()), ModItemGroup.RUBIDIUM);
 
     public static final Block RUBIDIUM_LAMP = registerBlock("rubidium_lamp",
-            new RubidiumLampBlock(FabricBlockSettings.of(Material.REDSTONE_LAMP).strength(4f).requiresTool().requiresTool()
+            new RubidiumLampBlock(FabricBlockSettings.of(Material.REDSTONE_LAMP).strength(4f).requiresTool()
                     .luminance(state -> state.get(RubidiumLampBlock.LIT) ? 15 : 0)), ModItemGroup.RUBIDIUM);
 
     private static Block registerBlock(String name, Block block, ItemGroup tab){
