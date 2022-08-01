@@ -1,9 +1,12 @@
 package net.bliss.tutorialmod.item;
 
 import net.bliss.tutorialmod.TutorialMod;
+import net.bliss.tutorialmod.block.ModBlocks;
 import net.bliss.tutorialmod.item.custom.EightBallItem;
 import net.bliss.tutorialmod.item.custom.EightBallItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.item.AliasedBlockItem;
+import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -20,6 +23,13 @@ public class ModItems {
     public static final Item EIGHT_BALL = registerItem("eight_ball",
             new EightBallItem(new FabricItemSettings().group(ModItemGroup.RUBIDIUM).maxCount(1)));
 
+    public static final Item EGGPLANT_SEEDS = registerItem("eggplant_seeds",
+            new AliasedBlockItem(ModBlocks.EGGPLAND_CROP,
+                    new FabricItemSettings().group(ModItemGroup.RUBIDIUM).maxCount(1)));
+
+    public static final Item EGGPLANT = registerItem("eggplant",
+            new Item(new FabricItemSettings().group(ModItemGroup.RUBIDIUM)
+                    .food(new FoodComponent.Builder().hunger(4).saturationModifier(4f).build())));
 
     private static Item registerItem(String name,Item item) {
         return Registry.register(Registry.ITEM, new Identifier(TutorialMod.MOD_ID, name), item);

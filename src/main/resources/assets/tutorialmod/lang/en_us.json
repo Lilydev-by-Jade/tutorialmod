@@ -2,12 +2,15 @@
   "item.tutorialmod.raw_rubidium": "Raw Rubidium",
   "item.tutorialmod.rubidium": "Rubidium",
   "item.tutorialmod.eight_ball": "Eight Ball",
+  "item.tutorialmod.eggplant_seeds": "Eggplant Seeds",
+  "item.tutorialmod.eggplant": "Eggplant",
 
   "block.tutorialmod.rubidium_block": "Block of Rubidium",
   "block.tutorialmod.rubidium_ore": "Rubidium Ore",
   "block.tutorialmod.deepslate_rubidium_ore": "Deepslate Rubidium Ore",
   "block.tutorialmod.jumpy_block": "Jumpy Block",
   "block.tutorialmod.rubidium_lamp": "Rubidium Lamp",
+ "block.tutorialmod.eggplant_crop": "Eggplant Crop",
 
   "itemGroup.tutorialmod.rubidium": "Rubidium Tutorial Tab"
 }

@@ -1,12 +1,14 @@
 package net.bliss.tutorialmod.block;
 
 import net.bliss.tutorialmod.TutorialMod;
+import net.bliss.tutorialmod.block.custom.EggplantCropBlock;
 import net.bliss.tutorialmod.block.custom.JumpyBlock;
 import net.bliss.tutorialmod.block.custom.RubidiumLampBlock;
 import net.bliss.tutorialmod.item.ModItemGroup;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.BlockItem;
@@ -38,6 +40,12 @@ public class ModBlocks {
             new RubidiumLampBlock(FabricBlockSettings.of(Material.REDSTONE_LAMP).strength(4f).requiresTool()
                     .luminance(state -> state.get(RubidiumLampBlock.LIT) ? 15 : 0)), ModItemGroup.RUBIDIUM);
 
+public static final Block EGGPLAND_CROP = registerBlockWitoutItem("eggplant_crop",
+            new EggplantCropBlock(FabricBlockSettings.copy(Blocks.WHEAT)));
+
+    private static Block registerBlockWitoutItem(String name, Block block) {
+        return Registry.register(Registry.BLOCK, new Identifier(TutorialMod.MOD_ID, name), block);
+    }
     private static Block registerBlock(String name, Block block, ItemGroup tab){
         registerblockItem(name, block, tab);
         return Registry.register(Registry.BLOCK, new Identifier(TutorialMod.MOD_ID, name), block);
