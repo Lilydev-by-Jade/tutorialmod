@@ -12,5 +12,7 @@
   "block.tutorialmod.rubidium_lamp": "Rubidium Lamp",
  "block.tutorialmod.eggplant_crop": "Eggplant Crop",
 
-  "itemGroup.tutorialmod.rubidium": "Rubidium Tutorial Tab"
+  "itemGroup.tutorialmod.rubidium": "Rubidium Tutorial Tab",
+
+  "entity.minecraft.villager.jumpmaster": "Jump Master"
 }
