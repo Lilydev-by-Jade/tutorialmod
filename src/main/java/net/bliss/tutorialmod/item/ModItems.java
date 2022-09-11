@@ -25,7 +25,7 @@ public class ModItems {
 
     public static final Item EGGPLANT_SEEDS = registerItem("eggplant_seeds",
             new AliasedBlockItem(ModBlocks.EGGPLAND_CROP,
-                    new FabricItemSettings().group(ModItemGroup.RUBIDIUM).maxCount(1)));
+                    new FabricItemSettings().group(ModItemGroup.RUBIDIUM)));
 
     public static final Item EGGPLANT = registerItem("eggplant",
             new Item(new FabricItemSettings().group(ModItemGroup.RUBIDIUM)

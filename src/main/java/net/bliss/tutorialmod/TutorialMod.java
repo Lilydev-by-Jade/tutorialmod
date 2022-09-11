@@ -2,6 +2,7 @@ package net.bliss.tutorialmod;
 
 import net.bliss.tutorialmod.block.ModBlocks;
 import net.bliss.tutorialmod.item.ModItems;
+import net.bliss.tutorialmod.painting.ModPaintings;
 import net.bliss.tutorialmod.villager.ModVillagers;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -19,5 +20,6 @@ public class TutorialMod implements ModInitializer {
 		ModVillagers.registerTrades();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModPaintings.registerPaintings();
 	}
 }
