@@ -3,6 +3,7 @@ package net.bliss.tutorialmod;
 import net.bliss.tutorialmod.block.ModBlocks;
 import net.bliss.tutorialmod.item.ModItems;
 import net.bliss.tutorialmod.painting.ModPaintings;
+import net.bliss.tutorialmod.util.ModLootTableModifiers;
 import net.bliss.tutorialmod.villager.ModVillagers;
 import net.bliss.tutorialmod.world.feature.ModConfiguredFeatures;
 import net.bliss.tutorialmod.world.gen.ModOreGeneration;
@@ -25,5 +26,6 @@ public class TutorialMod implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModPaintings.registerPaintings();
 		ModOreGeneration.generateOres();
+		ModLootTableModifiers.modifyLootTables();
 	}
 }
