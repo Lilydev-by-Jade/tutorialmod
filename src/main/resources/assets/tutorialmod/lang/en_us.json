@@ -14,5 +14,8 @@
 
   "itemGroup.tutorialmod.rubidium": "Rubidium Tutorial Tab",
 
-  "entity.minecraft.villager.jumpmaster": "Jump Master"
+  "entity.minecraft.villager.jumpmaster": "Jump Master",
+
+  "key.category.tutorialmod.tutorial": "Tutorial Mod Keys",
+  "key.tutorialmod.drink_water": "Drink Water Key"
 }
