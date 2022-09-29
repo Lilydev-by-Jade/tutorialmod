@@ -1,6 +1,7 @@
 package net.bliss.tutorialmod;
 
 import net.bliss.tutorialmod.block.ModBlocks;
+import net.bliss.tutorialmod.event.PlayerTickHandler;
 import net.bliss.tutorialmod.item.ModItems;
 import net.bliss.tutorialmod.networking.ModMessages;
 import net.bliss.tutorialmod.painting.ModPaintings;
@@ -9,6 +10,7 @@ import net.bliss.tutorialmod.villager.ModVillagers;
 import net.bliss.tutorialmod.world.feature.ModConfiguredFeatures;
 import net.bliss.tutorialmod.world.gen.ModOreGeneration;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -29,5 +31,6 @@ public class TutorialMod implements ModInitializer {
 		ModOreGeneration.generateOres();
 		ModLootTableModifiers.modifyLootTables();
 		ModMessages.registerC2SPackets();
+		ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 	}
 }

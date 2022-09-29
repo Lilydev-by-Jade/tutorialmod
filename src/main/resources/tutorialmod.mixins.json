@@ -4,6 +4,7 @@
   "package": "net.bliss.tutorialmod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ModEntitySaverMixin"
   ],
   "client": [
     "ExampleMixin"

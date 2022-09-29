@@ -1,5 +1,7 @@
 package net.bliss.tutorialmod.networking.packet;
 
+import net.bliss.tutorialmod.util.IEntityDataSaver;
+import net.bliss.tutorialmod.util.ThirstData;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.block.Blocks;
 import net.minecraft.network.PacketByteBuf;
@@ -30,11 +32,18 @@ public class DrinkingC2SPacket {
             world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_GENERIC_DRINK, SoundCategory.PLAYERS,
                     .5F, world.random.nextFloat() * .1F + .9F);
             // output thirst level
+            player.sendMessage(Text.literal("Thirst:" + ((IEntityDataSaver) player).getPersistentData().getInt("thirst"))
+                    .fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
             // add water level to player
+            ThirstData.addThirst(((IEntityDataSaver) player), 1);
         } else {
         // notify player
             player.sendMessage(Text.translatable(MESSAGE_NO_WATER_NEARBY)
                     .fillStyle(Style.EMPTY.withColor(Formatting.RED)), false);
+            // output thirst level
+            player.sendMessage(Text.literal("Thirst:" + ((IEntityDataSaver) player).getPersistentData().getInt("thirst"))
+                    .fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
+            // sync thirst
         }
 
     }
