@@ -22,30 +22,36 @@ public class DrinkingC2SPacket {
 
     public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler,
                                PacketByteBuf buf, PacketSender responseSender) {
-        // everything here happens in the server
+        // Everything here happens ONLY on the Server!
         ServerWorld world = player.getWorld();
-        if (isAroundWaterThem(player, world, 2)) {
-            // Notify player
+        if(isAroundWaterThem(player, world, 2)) {
+            // Notify the player
             player.sendMessage(Text.translatable(MESSAGE_DRINKING_WATER)
                     .fillStyle(Style.EMPTY.withColor(Formatting.DARK_AQUA)), false);
-            // Play drinking sound
+
+            // Play the drinking sound
             world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_GENERIC_DRINK, SoundCategory.PLAYERS,
-                    .5F, world.random.nextFloat() * .1F + .9F);
-            // output thirst level
-            player.sendMessage(Text.literal("Thirst:" + ((IEntityDataSaver) player).getPersistentData().getInt("thirst"))
-                    .fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
-            // add water level to player
+                    0.5F, world.random.nextFloat() * 0.1F + 0.9F);
+
+            // actually add the water level to the player
             ThirstData.addThirst(((IEntityDataSaver) player), 1);
+
+            // outputting the current thirst level of player
+            player.sendMessage(Text.literal("Thirst: " + ((IEntityDataSaver) player).getPersistentData().getInt("thirst"))
+                    .fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
+
         } else {
-        // notify player
+            // Notify the player
             player.sendMessage(Text.translatable(MESSAGE_NO_WATER_NEARBY)
                     .fillStyle(Style.EMPTY.withColor(Formatting.RED)), false);
-            // output thirst level
-            player.sendMessage(Text.literal("Thirst:" + ((IEntityDataSaver) player).getPersistentData().getInt("thirst"))
-                    .fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
-            // sync thirst
-        }
 
+            // outputting the current thirst level of player
+            player.sendMessage(Text.literal("Thirst: " + ((IEntityDataSaver) player).getPersistentData().getInt("thirst"))
+                    .fillStyle(Style.EMPTY.withColor(Formatting.AQUA)), true);
+
+            // Sync thirst
+            ThirstData.syncThirst(((IEntityDataSaver) player).getPersistentData().getInt("thirst"), player);
+        }
     }
 
     private static boolean isAroundWaterThem(ServerPlayerEntity player, ServerWorld world, int size) {
