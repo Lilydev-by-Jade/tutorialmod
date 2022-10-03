@@ -7,18 +7,26 @@ import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.state.property.Properties;
 
+import java.util.Optional;
+
 public abstract class SoapWaterFluid extends FlowableFluid {
     @Override
     protected boolean isInfinite() {
-        return false;
+        return true;
     }
 
     @Override
@@ -85,6 +93,26 @@ public abstract class SoapWaterFluid extends FlowableFluid {
     @Override
     public boolean isStill(FluidState state) {
         return false;
+    }
+
+    @Override
+    protected void randomDisplayTick(World world, BlockPos pos, FluidState state, Random random) {
+        if (!state.isStill() && !(Boolean)state.get(FALLING)) {
+            if (random.nextInt(64) == 0) {
+                world.playSound((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5,
+                        SoundEvents.BLOCK_WATER_AMBIENT, SoundCategory.BLOCKS, random.nextFloat() * 0.25F + 0.75F,
+                        random.nextFloat() + 0.5F, true);
+            }
+        } else if (random.nextInt(10) == 0) {
+            world.addParticle(ParticleTypes.UNDERWATER, (double)pos.getX() + random.nextDouble(), (double)pos.getY() + random.nextDouble(),
+                    (double)pos.getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+        }
+
+    }
+
+    @Override
+    public Optional<SoundEvent> getBucketFillSound() {
+        return Optional.of(SoundEvents.ITEM_BUCKET_FILL);
     }
 
     public static class Flowing extends SoapWaterFluid {
