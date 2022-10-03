@@ -2,6 +2,7 @@ package net.bliss.tutorialmod;
 
 import net.bliss.tutorialmod.block.ModBlocks;
 import net.bliss.tutorialmod.event.PlayerTickHandler;
+import net.bliss.tutorialmod.fluid.ModFluids;
 import net.bliss.tutorialmod.item.ModItems;
 import net.bliss.tutorialmod.networking.ModMessages;
 import net.bliss.tutorialmod.painting.ModPaintings;
@@ -15,22 +16,27 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TutorialMod implements ModInitializer {
-
-
 	public static final String MOD_ID = "tutorialmod";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
 		ModConfiguredFeatures.registerConfiguredFeature();
+
 		ModVillagers.registerVillagers();
 		ModVillagers.registerTrades();
+
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+
 		ModPaintings.registerPaintings();
 		ModOreGeneration.generateOres();
+
 		ModLootTableModifiers.modifyLootTables();
 		ModMessages.registerC2SPackets();
+
+		ModFluids.register();
+
 		ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 	}
 }
