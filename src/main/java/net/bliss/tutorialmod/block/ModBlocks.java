@@ -2,6 +2,7 @@ package net.bliss.tutorialmod.block;
 
 import net.bliss.tutorialmod.TutorialMod;
 import net.bliss.tutorialmod.block.custom.EggplantCropBlock;
+import net.bliss.tutorialmod.block.custom.GemInfusingStationBlock;
 import net.bliss.tutorialmod.block.custom.JumpyBlock;
 import net.bliss.tutorialmod.block.custom.RubidiumLampBlock;
 import net.bliss.tutorialmod.item.ModItemGroup;
@@ -40,8 +41,12 @@ public class ModBlocks {
             new RubidiumLampBlock(FabricBlockSettings.of(Material.REDSTONE_LAMP).strength(4f).requiresTool()
                     .luminance(state -> state.get(RubidiumLampBlock.LIT) ? 15 : 0)), ModItemGroup.RUBIDIUM);
 
-public static final Block EGGPLAND_CROP = registerBlockWitoutItem("eggplant_crop",
+    public static final Block EGGPLAND_CROP = registerBlockWitoutItem("eggplant_crop",
             new EggplantCropBlock(FabricBlockSettings.copy(Blocks.WHEAT)));
+
+    public static final Block GEM_INFUSING_STATION = registerBlock("gem_infusing_station",
+            new GemInfusingStationBlock(FabricBlockSettings.of(Material.METAL).
+                    strength(4f).requiresTool().nonOpaque()), ModItemGroup.RUBIDIUM);
 
     private static Block registerBlockWitoutItem(String name, Block block) {
         return Registry.register(Registry.BLOCK, new Identifier(TutorialMod.MOD_ID, name), block);
