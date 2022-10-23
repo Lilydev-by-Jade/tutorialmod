@@ -5,11 +5,14 @@ import net.bliss.tutorialmod.client.ThirstHudOverlay;
 import net.bliss.tutorialmod.event.KeyInputHandler;
 import net.bliss.tutorialmod.fluid.ModFluids;
 import net.bliss.tutorialmod.networking.ModMessages;
+import net.bliss.tutorialmod.screen.GemInfusingScreen;
+import net.bliss.tutorialmod.screen.ModScreenHandlers;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 
@@ -31,5 +34,6 @@ public class TutorialModClient implements ClientModInitializer {
 
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getTranslucent(),
                 ModFluids.STILL_SOAP_WATER, ModFluids.FLOWING_SOAP_WATER);
+        HandledScreens.register(ModScreenHandlers.GEM_INFUSING_SCREEN_HANDLER, GemInfusingScreen::new);
     }
 }

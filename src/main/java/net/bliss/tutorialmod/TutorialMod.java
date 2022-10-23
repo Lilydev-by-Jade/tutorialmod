@@ -1,11 +1,13 @@
 package net.bliss.tutorialmod;
 
 import net.bliss.tutorialmod.block.ModBlocks;
+import net.bliss.tutorialmod.block.entity.ModBlockEntities;
 import net.bliss.tutorialmod.event.PlayerTickHandler;
 import net.bliss.tutorialmod.fluid.ModFluids;
 import net.bliss.tutorialmod.item.ModItems;
 import net.bliss.tutorialmod.networking.ModMessages;
 import net.bliss.tutorialmod.painting.ModPaintings;
+import net.bliss.tutorialmod.screen.ModScreenHandlers;
 import net.bliss.tutorialmod.util.ModLootTableModifiers;
 import net.bliss.tutorialmod.villager.ModVillagers;
 import net.bliss.tutorialmod.world.feature.ModConfiguredFeatures;
@@ -36,6 +38,8 @@ public class TutorialMod implements ModInitializer {
 		ModMessages.registerC2SPackets();
 
 		ModFluids.register();
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerAllScreenHandlers();
 
 		ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 	}
