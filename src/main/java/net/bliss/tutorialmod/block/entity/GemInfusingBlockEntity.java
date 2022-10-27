@@ -1,6 +1,7 @@
 package net.bliss.tutorialmod.block.entity;
 
 import net.bliss.tutorialmod.item.ModItems;
+import net.bliss.tutorialmod.recipe.GemInfusingRecipe;
 import net.bliss.tutorialmod.screen.GemInfusingScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -19,6 +20,8 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class GemInfusingBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
@@ -111,9 +114,12 @@ public class GemInfusingBlockEntity extends BlockEntity implements NamedScreenHa
             inventory.setStack(i, entity.getStack(i));
         }
 
+        Optional<GemInfusingRecipe> recipe = entity.getWorld().getRecipeManager()
+                .getFirstMatch(GemInfusingRecipe.Type.INSTANCE, inventory, entity.getWorld());
+
         if(hasRecipie(entity)) {
             entity.removeStack(1, 1);
-            entity.setStack(2, new ItemStack(ModItems.RUBIDIUM,
+            entity.setStack(2, new ItemStack(recipe.get().getOutput().getItem(),
                     entity.getStack(2).getCount() + 1));
             entity.resetProgress();
         }
@@ -126,10 +132,11 @@ public class GemInfusingBlockEntity extends BlockEntity implements NamedScreenHa
             inventory.setStack(i, entity.getStack(i));
         }
 
-        boolean hasRawGemInFirstSlot = entity.getStack(1).getItem() == ModItems.RAW_RUBIDIUM;
+        Optional<GemInfusingRecipe> match = entity.getWorld().getRecipeManager()
+                .getFirstMatch(GemInfusingRecipe.Type.INSTANCE, inventory, entity.getWorld());
 
-        return hasRawGemInFirstSlot && canInsertAmountIntoOoutputSlot(inventory, 1)
-                && canInsertItemIntoOutputSlot(inventory, ModItems.RUBIDIUM);
+        return match.isPresent() && canInsertAmountIntoOoutputSlot(inventory, 1)
+                && canInsertItemIntoOutputSlot(inventory, match.get().getOutput().getItem());
 
     }
 

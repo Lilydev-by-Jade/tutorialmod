@@ -7,6 +7,7 @@ import net.bliss.tutorialmod.fluid.ModFluids;
 import net.bliss.tutorialmod.item.ModItems;
 import net.bliss.tutorialmod.networking.ModMessages;
 import net.bliss.tutorialmod.painting.ModPaintings;
+import net.bliss.tutorialmod.recipe.ModRecipes;
 import net.bliss.tutorialmod.screen.ModScreenHandlers;
 import net.bliss.tutorialmod.util.ModLootTableModifiers;
 import net.bliss.tutorialmod.villager.ModVillagers;
@@ -39,7 +40,9 @@ public class TutorialMod implements ModInitializer {
 
 		ModFluids.register();
 		ModBlockEntities.registerBlockEntities();
+
 		ModScreenHandlers.registerAllScreenHandlers();
+		ModRecipes.registerRecipes();
 
 		ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
 	}
